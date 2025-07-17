@@ -2,27 +2,25 @@ name: Deploy to Hugging Face Spaces
 
 on:
   push:
-    branches:
-      - main  # অথবা যেই ব্রাঞ্চে তুমি কাজ করো
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      Human_and_Forklift_Detection_HF_Token: ${{ secrets.Human_and_Forklift_Detection_HF_Token}}
-
     steps:
-      - name: Checkout code with full history
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Full Git history দরকার
+          fetch-depth: 0
 
-      - name: Set Git config
+      - name: Set Git user
         run: |
           git config --global user.email "mdmahamudmredha@gmail.com"
           git config --global user.name "mdmahamudmredha"
 
-      - name: Add Hugging Face remote and push
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.Human_and_Forklift_Detection_HF_Token }}
         run: |
-          git remote add hf https://user:${Human_and_Forklift_Detection_HF_Token}@huggingface.co/spaces/mdmahamudmredha/Human_and_Forklift_Detection
-          git push hf main --force
+          git remote add space https://user:${HF_TOKEN}@huggingface.co/spaces/mdmahamudmredha/Human_and_Forklift_Detection
+          git push space main --force
