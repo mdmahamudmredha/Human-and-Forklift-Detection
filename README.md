@@ -8,7 +8,7 @@ sdk_version: 5.38.0
 app_file: app.py
 pinned: false
 license: mit
-pinned: false
+short_description: CICD DEMO
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
