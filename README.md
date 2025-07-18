@@ -12,4 +12,4 @@ license: mit
 
 # Human and Forklift Detection 🚧
 
-Real-time object detection of humans and forklifts using YOLOv5 and OpenCV.
+
